@@ -4,9 +4,9 @@
   "scripts": {
     "eslint": "eslint ./",
     "eslint-fix": "eslint ./ --fix",
-    "dev": "next",
+    "dev": "node server.babel.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.babel.js"
   },
   "pre-commit": [
     "eslint"
@@ -17,6 +17,9 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "express": "^4.15.3",
+    "express-logging": "^1.1.1",
+    "logops": "^2.0.0",
     "next": "^2.4.3",
     "next-redux-wrapper": "^1.1.1",
     "prop-types": "^15.5.9",

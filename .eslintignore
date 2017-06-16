@@ -1,3 +1,5 @@
 static/*.js
 static/**/*.js
 next.config.js
+server.js
+server.babel.js

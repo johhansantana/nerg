@@ -4,10 +4,10 @@
   "scripts": {
     "eslint": "eslint ./",
     "eslint-fix": "eslint ./ --fix",
-    "dev": "node server.babel.js",
+    "dev": "node server.babel.js -p $PORT",
     "build": "next build",
     "heroku-postbuild": "next build",
-    "start": "NODE_ENV=production node server.babel.js"
+    "start": "NODE_ENV=production node server.babel.js -p $PORT"
   },
   "pre-commit": [
     "eslint"

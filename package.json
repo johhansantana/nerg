@@ -6,6 +6,7 @@
     "eslint-fix": "eslint ./ --fix",
     "dev": "node server.babel.js",
     "build": "next build",
+    "heroku-postbuild": "next build",
     "start": "NODE_ENV=production node server.babel.js"
   },
   "pre-commit": [

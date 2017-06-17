@@ -2,6 +2,9 @@ import Sequelize from 'sequelize';
 
 const conn = new Sequelize(process.env.DATABASE_URL, { // eslint-disable-line
   dialect: 'postgres',
+  dialectOptions: {
+    ssl: true
+  },
 
   pool: {
     max: 10,

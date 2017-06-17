@@ -6,8 +6,8 @@ import graphqlHTTP from 'express-graphql';
 import schema from '!/server/schema';
 import '!/server/db';
 
-const dev = process.env.NODE_ENV !== 'production';
-const port = process.env.PORT || 3000;
+const dev = process.env.NODE_ENV !== 'production'; // eslint-disable-line
+const port = process.env.PORT || 3000; // eslint-disable-line
 const app = next({ dev });
 const handle = app.getRequestHandler();
 

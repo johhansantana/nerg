@@ -2,6 +2,9 @@ import express from 'express';
 import next from 'next';
 import expressLogging from 'express-logging';
 import logger from 'logops';
+import graphqlHTTP from 'express-graphql';
+import schema from '!/server/schema';
+import '!/server/db';
 
 const dev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 3000;
@@ -15,9 +18,10 @@ app.prepare()
 
   // TODO separate server routes
 
-  server.get('/api', (req, res) => {
-    return res.send('hey');
-  });
+  server.use('/graphql', graphqlHTTP({
+    schema,
+    graphiql: true
+  }));
 
   server.get('*', (req, res) => {
     return handle(req, res);

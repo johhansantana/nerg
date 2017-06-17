@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-express-redux-graphql",
+  "name": "nerg",
   "version": "1.0.0",
   "scripts": {
     "eslint": "eslint ./",
@@ -13,8 +13,8 @@
     "eslint"
   ],
   "now": {
-    "name": "nextjs-express-redux-graphql",
-    "alias": "nextjs-express-redux-graphql"
+    "name": "nerg",
+    "alias": "nerg"
   },
   "dependencies": {
     "axios": "^0.15.3",

@@ -7,55 +7,9 @@ import {
   GraphQLNonNull
 } from 'graphql';
 import db from '../db';
+import { articleType, userType } from './types';
 
-const articleType = new GraphQLObjectType({
-  name: 'Article',
-  fields: () => ({
-    id: {
-      type: GraphQLInt
-    },
-    name: {
-      type: GraphQLString
-    },
-    description: {
-      type: GraphQLString
-    },
-    createdBy: {
-      type: userType,
-      resolve(article) {
-        return article.getUser();
-      }
-    }
-  })
-});
-
-const userType = new GraphQLObjectType({
-  name: 'User',
-  fields: () => ({
-    id: {
-      type: GraphQLInt
-    },
-    name: {
-      type: GraphQLString
-    },
-    lastName: {
-      type: GraphQLString
-
-    },
-    email: {
-      type: GraphQLString
-    },
-    createdAt: {
-      type: GraphQLString
-    },
-    articles: {
-      type: new GraphQLList(articleType),
-      resolve(user) {
-        return user.getArticles();
-      }
-    }
-  })
-});
+// TODO separate functions
 
 const query = new GraphQLObjectType({
   name: 'RootQuery',

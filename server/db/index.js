@@ -1,7 +1,6 @@
 import Sequelize from 'sequelize';
 
-const conn = new Sequelize('db_name', 'db_user', 'db_password', {
-  host: 'localhost',
+const conn = new Sequelize(process.env.DATABASE_URL, { // eslint-disable-line
   dialect: 'postgres',
 
   pool: {

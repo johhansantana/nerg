@@ -1,7 +1,7 @@
-import articleType from './articleType';
-import userType from './userType';
+import commentType from './commentType';
+import postType from './postType';
 
 export {
-  articleType,
-  userType
+  commentType,
+  postType
 };

@@ -7,42 +7,39 @@ import {
   GraphQLNonNull
 } from 'graphql';
 import db from '../db';
-import { articleType, userType } from './types';
+import { commentType, postType } from './types';
 
 // TODO separate functions
 
 const query = new GraphQLObjectType({
   name: 'RootQuery',
   fields: {
-    users: {
-      type: new GraphQLList(userType),
+    posts: {
+      type: new GraphQLList(postType),
       args: {
         id: {
           type: GraphQLInt
         },
-        name: {
+        title: {
           type: GraphQLString
         },
-        lastName: {
-          type: GraphQLString
-        },
-        email: {
+        content: {
           type: GraphQLString
         },
       },
       resolve: (_, args) => {
-        return db.models.user.findAll({ where: args });
+        return db.models.post.findAll({ where: args });
       }
     },
-    articles: {
-      type: new GraphQLList(articleType),
+    comments: {
+      type: new GraphQLList(commentType),
       args: {
         id: {
           type: GraphQLInt
         }
       },
       resolve: (_, args) => {
-        return db.models.article.findAll({ where: args });
+        return db.models.comment.findAll({ where: args });
       }
     }
   },
@@ -52,49 +49,41 @@ const mutation = new GraphQLObjectType({
   name: 'Mutation',
   description: 'Mutate stuff',
   fields: {
-    addUser: {
-      type: userType,
+    addPost: {
+      type: postType,
       args: {
-        name: {
+        title: {
           type: new GraphQLNonNull(GraphQLString)
         },
-        lastName: {
+        content: {
           type: new GraphQLNonNull(GraphQLString)
         },
-        email: {
-          type: new GraphQLNonNull(GraphQLString)
-        },
-        password: {
-          type: new GraphQLNonNull(GraphQLString)
-        }
       },
       resolve: (source, args) => {
-        return db.models.user.create({
-          name: args.name,
-          lastName: args.lastName,
-          email: args.email,
-          password: args.password
+        return db.models.post.create({
+          title: args.title,
+          content: args.content,
         });
       }
     },
-    addArticle: {
-      type: articleType,
+    addComment: {
+      type: commentType,
       args: {
-        name: {
+        title: {
           type: new GraphQLNonNull(GraphQLString),
         },
-        description: {
+        comment: {
           type: new GraphQLNonNull(GraphQLString),
         },
-        userId: {
-          type: new GraphQLNonNull(GraphQLInt),
+        postId: {
+          type: new GraphQLNonNull(GraphQLInt)
         }
       },
       resolve: (source, args) => {
-        return db.models.article.create({
-          name: args.name,
-          description: args.description,
-          userId: args.userId
+        return db.models.comment.create({
+          title: args.title,
+          comment: args.comment,
+          postId: args.postId
         });
       }
     }

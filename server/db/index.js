@@ -16,47 +16,36 @@ conn
 .authenticate()
 .then(() => {
   console.log('Connection has been established successfully.');
-  User.sync();
-  Article.sync();
+  Post.sync();
+  Comment.sync();
 })
 .catch(err => {
   console.error('Unable to connect to the database:', err);
 });
 
-const User = conn.define('user', {
-  name: {
+const Post = conn.define('post', {
+  title: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  lastName: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  email: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      isEmail: true
-    }
-  },
-  password: {
+  content: {
     type: Sequelize.STRING,
     allowNull: false
   }
 });
 
-const Article = conn.define('article', {
-  name: {
+const Comment = conn.define('comment', {
+  title: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  description: {
+  comment: {
     type: Sequelize.STRING,
     allowNull: false
   },
 });
 
-Article.belongsTo(User);
-User.hasMany(Article);
+Comment.belongsTo(Post);
+Post.hasMany(Comment);
 
 export default conn;

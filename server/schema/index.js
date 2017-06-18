@@ -3,45 +3,19 @@ import {
   GraphQLObjectType,
   GraphQLString,
   GraphQLInt,
-  GraphQLList,
   GraphQLNonNull
 } from 'graphql';
 import db from '../db';
 import { commentType, postType } from './types';
+import { posts, comments } from './queries';
 
 // TODO separate functions
 
 const query = new GraphQLObjectType({
   name: 'RootQuery',
   fields: {
-    posts: {
-      type: new GraphQLList(postType),
-      args: {
-        id: {
-          type: GraphQLInt
-        },
-        title: {
-          type: GraphQLString
-        },
-        content: {
-          type: GraphQLString
-        },
-      },
-      resolve: (_, args) => {
-        return db.models.post.findAll({ where: args });
-      }
-    },
-    comments: {
-      type: new GraphQLList(commentType),
-      args: {
-        id: {
-          type: GraphQLInt
-        }
-      },
-      resolve: (_, args) => {
-        return db.models.comment.findAll({ where: args });
-      }
-    }
+    posts,
+    comments
   },
 });
 

@@ -1,15 +1,10 @@
 import {
   GraphQLSchema,
   GraphQLObjectType,
-  GraphQLString,
-  GraphQLInt,
-  GraphQLNonNull
 } from 'graphql';
-import db from '../db';
-import { commentType, postType } from './types';
 import { posts, comments } from './queries';
-
-// TODO separate functions
+import { addPost } from './mutations/posts';
+import { addComment } from './mutations/comments';
 
 const query = new GraphQLObjectType({
   name: 'RootQuery',
@@ -23,44 +18,8 @@ const mutation = new GraphQLObjectType({
   name: 'Mutation',
   description: 'Mutate stuff',
   fields: {
-    addPost: {
-      type: postType,
-      args: {
-        title: {
-          type: new GraphQLNonNull(GraphQLString)
-        },
-        content: {
-          type: new GraphQLNonNull(GraphQLString)
-        },
-      },
-      resolve: (source, args) => {
-        return db.models.post.create({
-          title: args.title,
-          content: args.content,
-        });
-      }
-    },
-    addComment: {
-      type: commentType,
-      args: {
-        title: {
-          type: new GraphQLNonNull(GraphQLString),
-        },
-        comment: {
-          type: new GraphQLNonNull(GraphQLString),
-        },
-        postId: {
-          type: new GraphQLNonNull(GraphQLInt)
-        }
-      },
-      resolve: (source, args) => {
-        return db.models.comment.create({
-          title: args.title,
-          comment: args.comment,
-          postId: args.postId
-        });
-      }
-    }
+    addPost,
+    addComment
   }
 });
 

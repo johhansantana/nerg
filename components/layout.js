@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Router from 'next/router';
 import Head from 'next/head';
+import CSSTag from './CSSTag';
+import bootstrap from '!/styles/bootstrap.scss';
 
 class Layout extends Component {
   static propTypes = {
@@ -36,7 +38,6 @@ class Layout extends Component {
   render() {
     const { title, children } = this.props;
     const { aboutText, production } = this.state;
-    console.log('production? ', production);
     return (
       <div>
         <Head>
@@ -51,6 +52,7 @@ class Layout extends Component {
             <link rel="stylesheet" href="/static/css/app.css" />
           }
         </Head>
+        <CSSTag style={bootstrap} />
         <header>
           <nav>
             <Link href="/">

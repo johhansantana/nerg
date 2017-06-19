@@ -8,9 +8,10 @@
     "postcss": "postcss --config postcss.config.js --replace ./static/css/app.css",
     "css:prod": "npm run gulp && npm run postcss",
     "dev": "node server.babel.js -p $PORT",
-    "build": "next build",
+    "build": "npm run css:prod && next build",
     "start": "NODE_ENV=production node server.babel.js -p $PORT",
-    "prod": "npm run css:prod && npm run build",
+    "heroku-build": "next build",
+    "prod": "npm run css:prod && npm run heroku-build",
     "heroku-postbuild": "npm run prod"
   },
   "pre-commit": [
@@ -18,7 +19,10 @@
   ],
   "now": {
     "name": "nerg",
-    "alias": "nerg"
+    "alias": "nerg",
+    "env": [
+      "DATABASE_URL"
+    ]
   },
   "dependencies": {
     "autoprefixer": "^7.1.1",

@@ -21,6 +21,7 @@
     "alias": "nerg"
   },
   "dependencies": {
+    "autoprefixer": "^7.1.1",
     "axios": "^0.15.3",
     "babel-eslint": "^7.2.3",
     "babel-plugin-root-import": "^5.1.0",
@@ -29,12 +30,17 @@
     "express-graphql": "^0.6.6",
     "express-logging": "^1.1.1",
     "graphql": "^0.10.1",
+    "gulp": "^3.9.1",
+    "gulp-csso": "^3.0.0",
+    "gulp-sass": "^3.1.0",
     "logops": "^2.0.0",
     "next": "^2.4.3",
     "next-redux-wrapper": "^1.1.1",
     "node-sass": "^4.5.3",
     "pg": "^6.2.4",
+    "postcss-cli": "^4.1.0",
     "postcss-easy-import": "^2.1.0",
+    "postcss-flexbugs-fixes": "^3.0.0",
     "postcss-loader": "^2.0.6",
     "prop-types": "^15.5.9",
     "raw-loader": "^0.5.1",
@@ -48,14 +54,8 @@
     "sequelize": "^4.1.0"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.1",
     "eslint": "^3.19.0",
     "eslint-plugin-react": "^7.0.1",
-    "gulp": "^3.9.1",
-    "gulp-csso": "^3.0.0",
-    "gulp-sass": "^3.1.0",
-    "postcss-cli": "^4.1.0",
-    "postcss-flexbugs-fixes": "^3.0.0",
     "pre-commit": "^1.2.2"
   },
   "author": "",

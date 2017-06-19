@@ -4,7 +4,7 @@ export const SET_STRING = 'SET_STRING';
  * @param theString
  * @return {{type: string, theString: String}}
  */
-export function setString(theString: String = 'the default string') {
+export function setString(theString: string = 'the default string') {
   return {
     type: SET_STRING,
     theString

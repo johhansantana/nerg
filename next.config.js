@@ -1,11 +1,30 @@
 const webpack = require("webpack");
 
 module.exports = {
-  webpack: function(c) {
-    if (c.resolve.alias) {
-      delete c.resolve.alias["react"];
-      delete c.resolve.alias["react-dom"];
+  webpack: function(config, { dev }) {
+    if (config.resolve.alias) {
+      delete config.resolve.alias["react"];
+      delete config.resolve.alias["react-dom"];
     }
-    return c;
+
+    config.devtool = 'source-map';
+
+    config.module.rules.push(
+      {
+        test: /\.(css|scss)/,
+        loader: 'emit-file-loader',
+        options: {
+          name: 'dist/[path][name].[ext]'
+        }
+      },
+      {
+        test: /\.s?(a|c)ss$/,
+        use: ['babel-loader', 'raw-loader', 'postcss-loader',
+          { loader: 'sass-loader' }
+        ]
+      }
+    );
+
+    return config;
   }
 };

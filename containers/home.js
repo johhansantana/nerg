@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Layout from '!/components/layout';
 import * as demoActions from '!/actions/demoActions';
+import CSSTag from '!/components/CSSTag';
+import style from '!/styles/home.scss';
 /**
  * Home component to show basic redux usage with nextjs.
  */
@@ -47,13 +49,14 @@ class Home extends Component {
     const { demoString } = this.props;
     return (
       <Layout title="Home page">
+        <CSSTag style={style} />
         <button onClick={() => this.changeDemoString('not the default string')}>
           change demo string of redux store property to 'not the default string'
         </button>
         <button onClick={() => this.changeDemoString()}>
           change back to default
         </button>
-        <p>{demoString}</p>
+        <p className="coolFont">{demoString}</p>
       </Layout>
     );
   }

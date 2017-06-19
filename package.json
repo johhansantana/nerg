@@ -4,10 +4,14 @@
   "scripts": {
     "eslint": "eslint ./",
     "eslint-fix": "eslint ./ --fix",
+    "gulp": "./node_modules/gulp/bin/gulp.js",
+    "postcss": "postcss --config postcss.config.js --replace ./static/css/app.css",
+    "css:prod": "npm run gulp && npm run postcss",
     "dev": "node server.babel.js -p $PORT",
     "build": "next build",
     "heroku-postbuild": "next build",
-    "start": "NODE_ENV=production node server.babel.js -p $PORT"
+    "start": "NODE_ENV=production node server.babel.js -p $PORT",
+    "prod": "npm run css:prod && npm run build && NODE_ENV=production node server.babel.js -p $PORT"
   },
   "pre-commit": [
     "eslint"
@@ -28,19 +32,30 @@
     "logops": "^2.0.0",
     "next": "^2.4.3",
     "next-redux-wrapper": "^1.1.1",
+    "node-sass": "^4.5.3",
     "pg": "^6.2.4",
+    "postcss-easy-import": "^2.1.0",
+    "postcss-loader": "^2.0.6",
     "prop-types": "^15.5.9",
+    "raw-loader": "^0.5.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.1",
     "redux": "^3.6.0",
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.1.0",
+    "sass-loader": "^6.0.6",
     "sequelize": "^4.1.0"
   },
   "devDependencies": {
+    "autoprefixer": "^7.1.1",
     "eslint": "^3.19.0",
     "eslint-plugin-react": "^7.0.1",
+    "gulp": "^3.9.1",
+    "gulp-csso": "^3.0.0",
+    "gulp-sass": "^3.1.0",
+    "postcss-cli": "^4.1.0",
+    "postcss-flexbugs-fixes": "^3.0.0",
     "pre-commit": "^1.2.2"
   },
   "author": "",

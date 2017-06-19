@@ -11,7 +11,10 @@ class Layout extends Component {
   constructor() {
     super();
 
-    this.state = { aboutText: 'About' };
+    this.state = {
+      aboutText: 'About',
+      production: process.env.NODE_ENV === 'production' // eslint-disable-line
+    };
     this.loading = this.loading.bind(this);
   }
 
@@ -32,7 +35,8 @@ class Layout extends Component {
   }
   render() {
     const { title, children } = this.props;
-    const { aboutText } = this.state;
+    const { aboutText, production } = this.state;
+    console.log('production? ', production);
     return (
       <div>
         <Head>
@@ -42,6 +46,10 @@ class Layout extends Component {
             name="viewport"
             content="initial-scale=1.0, width=device-width"
           />
+          {
+            production &&
+            <link rel="stylesheet" href="/static/css/app.css" />
+          }
         </Head>
         <header>
           <nav>

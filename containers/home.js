@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import Layout from '!/components/layout';
-import * as demoActions from '!/actions/demoActions';
 
 class Home extends Component {
   render() {
@@ -56,14 +53,4 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    demoString: state.demoString
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(demoActions, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
 import Router from 'next/router';
 import Head from 'next/head';
+import NavBar from './navBar';
 import CSSTag from './CSSTag';
-import bootstrap from '!/styles/bootstrap.scss';
+import material from '!/styles/material.scss';
 
 class Layout extends Component {
   static propTypes = {
@@ -37,7 +37,7 @@ class Layout extends Component {
   }
   render() {
     const { title, children } = this.props;
-    const { aboutText, production } = this.state;
+    const { production } = this.state;
     return (
       <div>
         <Head>
@@ -52,19 +52,9 @@ class Layout extends Component {
             <link rel="stylesheet" href="/static/css/app.css" />
           }
         </Head>
-        <CSSTag style={bootstrap} />
+        <CSSTag style={material} />
         <header>
-          <nav>
-            <Link href="/">
-              <a>
-                Home
-              </a>
-            </Link>
-            {' | '}
-            <a href="#" onClick={aboutText === 'About' && this.loading}>
-              {aboutText}
-            </a>
-          </nav>
+          <NavBar />
         </header>
 
         {children}

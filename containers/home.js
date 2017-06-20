@@ -1,62 +1,56 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Layout from '!/components/layout';
 import * as demoActions from '!/actions/demoActions';
-import CSSTag from '!/components/CSSTag';
-import style from '!/styles/home.scss';
-/**
- * Home component to show basic redux usage with nextjs.
- */
+
 class Home extends Component {
-  static propTypes = {
-    /**
-     * demo string from redux actions.
-     */
-    demoString: PropTypes.string.isRequired,
-    /**
-     * redux function from actions to set the string, accepts a string param,
-     * if none is passed, it will return the default string set in the action.
-     */
-    setString: PropTypes.func.isRequired
-  };
-
-  constructor() {
-    super();
-    this.changeDemoString = this.changeDemoString.bind(this);
-  }
-
-  componentDidMount() {
-    const { setString } = this.props;
-    console.log('properties: ', this.props);
-    alert('setting default demo string to store');
-    setString();
-  }
-
-  /**
-   * Change the demo string to whatever you pass as a parameter. It will set the default string
-   * if no parameter is passed.
-   * @param {string} theString - String to be passed to show in component.
-   */
-  changeDemoString(theString: String) {
-    const { setString } = this.props;
-    console.log('changing demo string to: ', theString);
-    setString(theString);
-  }
-
   render() {
-    const { demoString } = this.props;
     return (
       <Layout title="Home page">
-        <CSSTag style={style} />
-        <button onClick={() => this.changeDemoString('not the default string')}>
-          change demo string of redux store property to 'not the default string'
-        </button>
-        <button onClick={() => this.changeDemoString()}>
-          change back to default
-        </button>
-        <p className="coolFont">{demoString}</p>
+        <div className="container">
+          <div className="row">
+            <div className="col-12" style={{marginTop: 25}}>
+              <h2 className="text-center">
+                Examples using GraphQL
+              </h2>
+            </div>
+          </div>
+          <div className="row flex-row justify-content-around align-items-center">
+            <div className="col-12 col-sm-4">
+              <div className="card">
+                <div className="card-block">
+                  <h4 className="card-title">
+                    Example with SSR
+                  </h4>
+                  <p className="card-text">
+                    This example will fetch the data before rendering the layout.
+                    Useful for SEO.
+                  </p>
+                  <a href="#" className="btn btn-primary">
+                    Go
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="col-12 col-sm-4">
+              <div className="card">
+                <div className="card-block">
+                  <h4 className="card-title">
+                    Example without SSR
+                  </h4>
+                  <p className="card-text">
+                    This example will fetch the data after rendering the layout.
+                    Useful for quicker routing changes plus cool loading effects.
+                  </p>
+                  <a href="#" className="btn btn-primary">
+                    Go
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </Layout>
     );
   }

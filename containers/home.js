@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { gql, graphql } from 'react-apollo';
 import Layout from '!/components/layout';
 
@@ -60,9 +59,11 @@ const myQuery = gql`query {
         id
         title
         content
+        comments {
+            title
+            comment
+        }
     }
 }`;
 
-const HomeWithGraphQl = graphql(myQuery)(Home);
-
-export default connect()(HomeWithGraphQl);
+export default graphql(myQuery)(Home);

@@ -19,7 +19,7 @@
         "react/jsx-uses-vars": 1,
         "react/react-in-jsx-scope": 1,
         "react/jsx-uses-react": 1,
-        "max-len": [2, 100],
+        "max-len": [2, 100, { "ignoreComments": true }],
         "no-console": "warn",
         "indent": [
             "error",

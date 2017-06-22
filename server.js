@@ -14,7 +14,7 @@ const handle = app.getRequestHandler();
 app.prepare()
 .then(() => {
   const server = express();
-  server.use(expressLogging(logger));
+  // server.use(expressLogging(logger));
 
   // TODO separate server routes
 

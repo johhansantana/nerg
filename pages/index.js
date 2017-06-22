@@ -1,29 +1,30 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import withRedux from 'next-redux-wrapper';
-import { initStore } from '!/store';
+import { ApolloProvider } from 'react-apollo';
+import apolloClient from '!/lib/initApollo';
+import initRedux from '!/lib/initRedux';
 import Home from '!/containers/home';
 /**
  * Component to show the home container.
  */
 class App extends React.Component {
-  static getInitialProps({ store, req }) {
+  static getInitialProps({ req }) {
     const isServer = !!req;
-    return { initialState: store.getState(), isServer };
+    return { isServer };
   }
 
   constructor(props) {
     super(props);
-    this.store = initStore(props.initialState, props.isServer);
+    this.apollo = apolloClient();
+    this.store = initRedux(this.apollo);
   }
 
   render() {
     return (
-      <Provider store={this.store}>
+      <ApolloProvider client={this.apollo} store={this.store}>
         <Home />
-      </Provider>
+      </ApolloProvider>
     );
   }
 }
 
-export default withRedux(initStore)(App);
+export default App;

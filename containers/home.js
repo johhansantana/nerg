@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { gql, graphql } from 'react-apollo';
 import Layout from '!/components/layout';
 
 class Home extends Component {
@@ -53,4 +55,14 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const myQuery = gql`query {
+    posts {
+        id
+        title
+        content
+    }
+}`;
+
+const HomeWithGraphQl = graphql(myQuery)(Home);
+
+export default connect()(HomeWithGraphQl);

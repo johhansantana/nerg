@@ -16,19 +16,8 @@ conn
 .authenticate()
 .then(() => {
   console.log('Connection has been established successfully.');
-  Post.sync({force: true}).then(() => {
-    return Post.create({
-      title: 'Testing title',
-      content: 'This is the content'
-    });
-  });
-  Comment.sync({force: true}).then(() => {
-    return Comment.create({
-      title: 'Comment title',
-      comment: 'This is the comment',
-      postId: 1
-    });
-  });
+  Post.sync();
+  Comment.sync();
 })
 .catch(err => {
   console.error('Unable to connect to the database:', err);

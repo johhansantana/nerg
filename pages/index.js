@@ -7,20 +7,15 @@ import Home from '!/containers/home';
  * Component to show the home container.
  */
 class App extends React.Component {
-  static async getInitialProps(ctx) {
+  static async getInitialProps() {
     let serverState = {};
-    // Evaluate the composed component's getInitialProps()
-    let composedInitialProps = {};
-    if (App.getInitialProps) {
-      composedInitialProps = await App.getInitialProps(ctx);
-    }
-    if (!process.browser) { // eslint-disable-line
+    if (!process.browser) {
       const apollo = apolloClient();
       const redux = initRedux(apollo);
       // Run all graphql queries
       const app = (
         <ApolloProvider client={apollo} store={redux}>
-          <Home {...composedInitialProps} />
+          <Home />
         </ApolloProvider>
       );
       await getDataFromTree(app);
@@ -33,7 +28,6 @@ class App extends React.Component {
     }
     return {
       serverState,
-      ...composedInitialProps
     };
   }
 

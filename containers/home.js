@@ -11,6 +11,19 @@ class Home extends Component {
             <div className="col-12" style={{marginTop: 25}}>
               <h2 className="text-center">
                 Examples using GraphQL
+                <br/>
+                {
+                  this.props.data.loading &&
+                  <span>loading...</span>
+                }
+                {
+                  !this.props.data.loading &&
+                  <span>{
+                    this.props.data.posts.map((post, index) => (
+                      <p key={index}>{post.title}</p>
+                    ))
+                  }</span>
+                }
               </h2>
             </div>
           </div>

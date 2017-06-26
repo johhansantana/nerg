@@ -1,31 +1,32 @@
+# NERG stack (NextJS, ExpressJS, Redux, GraphQL)
+This is a complete boilerplate using various [Zeit examples](https://github.com/zeit/next.js/tree/master/examples).
+It uses
+- NextJS
+- Redux
+- Apollo
+- Express
+- GraphQL
+- PostgresQL (it can use any other SQL DB)
 
-# Redux example
+## Features and Live Demo
+The boilerplate features examples on how to use GraphQL with Server Side Rendering.
+
+You can view the live demo [here](https://nerg.now.sh).
 
 ## How to use
+First of all, download or clone the repository.
 
-This boilerplate was continued from [zeit official example](https://github.com/zeit/next.js/tree/master/examples/with-redux).
+### Development
+- Download or clone the repository
+- `npm install`
+- `npm run dev`
+- Navigate to `localhost:3000`
 
-To use this boilerplate, first clone or download this repo: [https://github.com/johhansantana/nextjs-redux-boilerplate.git].
+### Production
+The `package.json` file has been setup to be run in `now` or in `heroku` but it can run in a VPS as well by running the `npm run prod` and `npm start` commands
 
-```bash
-git clone https://github.com/jsantana90/nextjs-redux-boilerplate.git *your-project-name*
-```
+#### Now
+To deploy to now simply type `now` and fill up the `DATABASE_URL` environment variable.
 
-cd into it and run:
-
-```bash
-npm install
-npm run dev
-```
-
-Deploy it to the cloud with [now](https://zeit.co/now) ([download](https://zeit.co/download))
-
-```bash
-now
-```
-
-### Live example:
-
-[https://nextjs-redux-boilerplate.now.sh]
-
-Live example uses my other repository [https://github.com/johhansantana/nextjs-express-boilerplate] as api which is deployed in `now` as well, go check it out.
+#### Heroku
+To deploy to Heroku you'll have to create an app in heroku's dashboard, then create (for this example) create a postgresql database then push your changes using `git push heroku master`

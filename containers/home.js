@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { gql, graphql } from 'react-apollo';
+import Link from 'next/link';
 import Layout from '!/components/layout';
 
 class Home extends Component {
@@ -25,9 +25,11 @@ class Home extends Component {
                     This example will fetch the data before rendering the layout.
                     Useful for SEO.
                   </p>
-                  <a href="#" className="btn btn-primary">
-                    Go
-                  </a>
+                  <Link href="/with-ssr">
+                    <a className="btn btn-primary">
+                      Go
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -41,9 +43,11 @@ class Home extends Component {
                     This example will fetch the data after rendering the layout.
                     Useful for quicker routing changes plus cool loading effects.
                   </p>
-                  <a href="#" className="btn btn-primary">
-                    Go
-                  </a>
+                  <Link href="/without-ssr">
+                    <a className="btn btn-primary">
+                      Go
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -54,16 +58,4 @@ class Home extends Component {
   }
 }
 
-const myQuery = gql`query {
-    posts {
-        id
-        title
-        content
-        comments {
-            title
-            comment
-        }
-    }
-}`;
-
-export default graphql(myQuery)(Home);
+export default Home;

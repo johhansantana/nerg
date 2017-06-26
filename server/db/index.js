@@ -25,22 +25,22 @@ conn
 
 const Post = conn.define('post', {
   title: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(20),
     allowNull: false
   },
   content: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(250),
     allowNull: false
   }
 });
 
 const Comment = conn.define('comment', {
   title: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(20),
     allowNull: false
   },
   comment: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(100),
     allowNull: false
   },
 });

@@ -3,14 +3,11 @@ import { ApolloProvider, getDataFromTree } from 'react-apollo';
 import apolloClient from '!/lib/initApollo';
 import initRedux from '!/lib/initRedux';
 import WithSSR from '!/containers/with-ssr';
-/**
- * Component to show the home container.
- */
 class App extends React.Component {
-  static async getInitialProps() {
+  static async getInitialProps(ctx) {
     let serverState = {};
     if (!process.browser) {
-      const apollo = apolloClient();
+      const apollo = apolloClient(ctx.req);
       const redux = initRedux(apollo);
       // Run all graphql queries
       const app = (

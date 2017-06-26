@@ -2,7 +2,7 @@ import React from 'react';
 import { ApolloProvider } from 'react-apollo';
 import apolloClient from '!/lib/initApollo';
 import initRedux from '!/lib/initRedux';
-import Home from '!/containers/home';
+import WithoutSSR from '!/containers/without-ssr';
 /**
  * Component to show the home container.
  */
@@ -16,10 +16,9 @@ class App extends React.Component {
   render() {
     return (
       <ApolloProvider client={this.apollo} store={this.store}>
-        <Home {...this.props} />
+        <WithoutSSR {...this.props} />
       </ApolloProvider>
     );
   }
 }
-
 export default App;

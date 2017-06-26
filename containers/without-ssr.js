@@ -5,7 +5,7 @@ class WithoutSSR extends Component {
   render() {
     const { data: {loading, posts} } = this.props;
     return (
-      <Layout title="With Server Side Rendering">
+      <Layout title="Without Server Side Rendering">
         <div className="container">
           <div className="row">
             <div className="col-12">

@@ -21,7 +21,7 @@
     "name": "nerg",
     "alias": "nerg",
     "env": [
-      "DATABASE_URL"
+      "GRAPHQL_URL"
     ]
   },
   "dependencies": {

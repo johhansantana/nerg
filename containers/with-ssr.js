@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import { gql, graphql } from 'react-apollo';
-import Layout from '!/components/layout';
+import React, { Component } from 'react'
+import { gql, graphql, compose } from 'react-apollo'
+import Layout from '!/components/layout'
+
 class WithSSR extends Component {
   render() {
-    const { data: {loading, posts} } = this.props;
+    const { posts: { loading, allPosts } } = this.props
     return (
       <Layout title="With Server Side Rendering">
         <div className="container">
@@ -39,7 +40,7 @@ class WithSSR extends Component {
                   </thead>
                   <tbody>
                   {
-                    posts.map((post, index) => (
+                    allPosts.map((post, index) => (
                       <tr key={index}>
                         <th scope="row">{post.title}</th>
                         <td>{post.content}</td>
@@ -64,21 +65,23 @@ class WithSSR extends Component {
           </div>
         </div>
       </Layout>
-    );
+    )
   }
 }
 
 const getPosts = gql`query {
-   posts {
-       id
-       title
-       content
-       comments {
-           id
-           title
-           comment
-       }
-   } 
-}`;
+    allPosts {
+        id
+        title
+        content
+        comments {
+            id
+            title
+            comment
+        }
+    }
+}`
 
-export default graphql(getPosts)(WithSSR);
+export default compose(
+  graphql(getPosts, { name: 'posts' })
+)(WithSSR)

@@ -1,19 +1,19 @@
-import React from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import React from 'react'
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap'
 
 export default class Example extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.toggle = this.toggle.bind(this);
+    this.toggle = this.toggle.bind(this)
     this.state = {
       isOpen: false
-    };
+    }
   }
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
-    });
+    })
   }
   render() {
     return (
@@ -30,6 +30,6 @@ export default class Example extends React.Component {
           </Collapse>
         </Navbar>
       </div>
-    );
+    )
   }
 }

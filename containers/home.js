@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Link from 'next/link';
-import Layout from '!/components/layout';
+import React, { Component } from 'react'
+import Link from 'next/link'
+import Layout from '!/components/layout'
 
 class Home extends Component {
   render() {
@@ -54,8 +54,8 @@ class Home extends Component {
           </div>
         </div>
       </Layout>
-    );
+    )
   }
 }
 
-export default Home;
+export default Home

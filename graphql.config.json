@@ -7,7 +7,7 @@
 
     "README_request" : "To request the schema from a url instead, remove the 'file' JSON property above (and optionally delete the default graphql.schema.json file).",
     "request": {
-      "url" : "http://localhost:3000/graphql",
+      "url" : "https://api.graph.cool/simple/v1/cj62admdr54vd0169on0y3gkb",
       "method" : "POST",
       "README_postIntrospectionQuery" : "Whether to POST an introspectionQuery to the url. If the url always returns the schema JSON, set to false and consider using GET",
       "postIntrospectionQuery" : true,
@@ -25,7 +25,7 @@
   "endpoints" : [
     {
       "name": "Default (http://localhost:3000/graphql)",
-      "url": "http://localhost:3000/graphql",
+      "url": "https://api.graph.cool/simple/v1/cj62admdr54vd0169on0y3gkb",
       "options" : {
         "headers": {
           "user-agent" : "JS GraphQL"

@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Router from 'next/router';
-import Head from 'next/head';
-import NavBar from './navBar';
-import CSSTag from './CSSTag';
-import material from '!/styles/material.scss';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import Router from 'next/router'
+import Head from 'next/head'
+import NavBar from './navBar'
+import CSSTag from './CSSTag'
+import material from '!/styles/material.scss'
 
 class Layout extends Component {
   static propTypes = {
     title: PropTypes.string
   };
   constructor() {
-    super();
+    super()
 
     this.state = {
       aboutText: 'About',
       production: process.env.NODE_ENV === 'production' // eslint-disable-line
-    };
-    this.loading = this.loading.bind(this);
+    }
+    this.loading = this.loading.bind(this)
   }
 
   /**
@@ -31,13 +31,13 @@ class Layout extends Component {
           Fetching about data before rendering page, this might take a while if <i>now</i> server
           was asleep...
         `
-      });
-      Router.push('/about');
+      })
+      Router.push('/about')
     }
   }
   render() {
-    const { title, children } = this.props;
-    const { production } = this.state;
+    const { title, children } = this.props
+    const { production } = this.state
     return (
       <div>
         <Head>
@@ -63,8 +63,8 @@ class Layout extends Component {
           This is the footer
         </footer>
       </div>
-    );
+    )
   }
 }
 
-export default Layout;
+export default Layout

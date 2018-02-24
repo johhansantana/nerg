@@ -1,3 +1,8 @@
+# Deprecated
+
+This project has been abandoned and will be followed here:
+https://github.com/johhansantana/nast
+
 # NERG stack (NextJS, ExpressJS, Redux, GraphQL)
 This is a complete boilerplate using various [Zeit examples](https://github.com/zeit/next.js/tree/master/examples).
 It uses
